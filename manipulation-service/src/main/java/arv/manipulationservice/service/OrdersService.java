@@ -1,6 +1,6 @@
 package arv.manipulationservice.service;
 
-import arv.apijtt.model.Orders;
+import arv.manipulationservice.model.Orders;
 
 import java.util.List;
 

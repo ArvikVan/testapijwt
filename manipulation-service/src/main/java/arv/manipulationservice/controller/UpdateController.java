@@ -1,9 +1,9 @@
 package arv.manipulationservice.controller;
 
-import arv.apijtt.model.Clients;
-import arv.apijtt.model.Orders;
-import arv.apijtt.service.ClientServiceImpl;
-import arv.apijtt.service.OrdersServiceImpl;
+import arv.manipulationservice.model.Clients;
+import arv.manipulationservice.model.Orders;
+import arv.manipulationservice.service.ClientServiceImpl;
+import arv.manipulationservice.service.OrdersServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

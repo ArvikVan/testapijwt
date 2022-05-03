@@ -1,6 +1,6 @@
 package arv.manipulationservice.repo;
 
-import arv.apijtt.model.Orders;
+import arv.manipulationservice.model.Orders;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

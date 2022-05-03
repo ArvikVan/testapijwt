@@ -1,7 +1,7 @@
 package arv.manipulationservice.service;
 
-import arv.apijtt.model.Clients;
-import arv.apijtt.repo.ClientRepo;
+import arv.manipulationservice.model.Clients;
+import arv.manipulationservice.repo.ClientRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
