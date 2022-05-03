@@ -1,9 +1,9 @@
 package arv.manipulationservice.service;
 
-import arv.manipulationservice.model.Clients;
-import arv.manipulationservice.model.Orders;
-import arv.manipulationservice.repo.ClientRepo;
-import arv.manipulationservice.repo.OrderRepo;
+import arv.apijtt.model.Clients;
+import arv.apijtt.model.Orders;
+import arv.apijtt.repo.ClientRepo;
+import arv.apijtt.repo.OrderRepo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,18 +24,21 @@ public class OrdersServiceImpl implements OrdersService {
         this.clientRepo = clientRepo;
     }
 
-    @Override
-    public Orders createOrders(Orders orders) {
-        /*clients.setId(clients.getId());*/
-        return orderRepo.save(orders);
+   @Override
+   public Orders createOrders(Orders orders) {
+       return orderRepo.save(orders);
+   }
+
+    public Clients findById(Long id) {
+       return clientRepo.findById(id).get();
     }
 
     @Override
     public List<Orders> getAllOrders() {
         return orderRepo.findAll();
     }
-
+/*
     public Clients findClientsId(Long id) {
         return clientRepo.findById(id).get();
-    }
+    }*/
 }

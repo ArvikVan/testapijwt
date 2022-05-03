@@ -1,6 +1,6 @@
 package arv.manipulationservice.service;
 
-import arv.manipulationservice.model.Orders;
+import arv.apijtt.model.Orders;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import java.util.List;
  * @since 02.05.2022
  */
 public interface OrdersService {
-    Orders createOrders(Orders orders);
+  /*  Orders createOrders(Orders orders, Clients clients);*/
+  Orders createOrders(Orders orders);
     List<Orders> getAllOrders();
 }

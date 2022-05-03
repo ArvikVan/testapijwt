@@ -1,17 +1,11 @@
 package arv.manipulationservice.controller;
 
-import arv.manipulationservice.model.Clients;
-import arv.manipulationservice.model.Orders;
-import arv.manipulationservice.service.ClientServiceImpl;
-import arv.manipulationservice.service.OrdersServiceImpl;
+import arv.apijtt.model.Clients;
+import arv.apijtt.model.Orders;
+import arv.apijtt.service.ClientServiceImpl;
+import arv.apijtt.service.OrdersServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,11 +23,8 @@ public class DataController {
     private OrdersServiceImpl ordersService;
 
     @PostMapping("/addClient")
-    public ResponseEntity<Clients> addNewClient(@RequestBody Clients clients) {
-        Clients saveClient = clientService.createClient(clients);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("location", "/data/add" + saveClient.getName().toString());
-        return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
+    public Clients creatClients(@RequestBody Clients clients) {
+        return clientService.createClient(clients);
     }
 
     @PostMapping("/getAllClients")
@@ -41,12 +32,11 @@ public class DataController {
         return clientService.getAllClients();
     }
 
-    @PostMapping("/addOrder")
-    public ResponseEntity<Orders> addNewOrder(@RequestBody Orders orders) {
-        Orders saveOrder = ordersService.createOrders(orders);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add("location", "/data/addOrder" + saveOrder);
-        return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
+    @PostMapping("/addOrder/{id}")
+    public Orders creatOrders(@RequestBody Orders orders, @PathVariable Long id) {
+        Clients clients = clientService.getById(id);
+        orders.setClients(clients);
+        return ordersService.createOrders(orders);
     }
 
     @PostMapping("/getAllOrders")

@@ -22,15 +22,7 @@ public class Orders {
     private Long id;
     private Long price;
     private LocalDateTime created = LocalDateTime.now();
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "clients_id", referencedColumnName = "id")
     private Clients clients;
-
-    public static Orders of(Long id, Long price, LocalDateTime created, Clients clients) {
-        Orders orders = new Orders();
-        orders.id = id;
-        orders.price = price;
-        orders.created = LocalDateTime.now();
-        orders.clients = clients;
-        return orders;
-    }
 }

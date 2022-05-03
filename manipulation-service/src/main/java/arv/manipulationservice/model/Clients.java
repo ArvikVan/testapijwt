@@ -1,13 +1,14 @@
 package arv.manipulationservice.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author ArvikV
@@ -24,6 +25,7 @@ public class Clients {
     private Long id;
     private String name;
     private final LocalDateTime created = LocalDateTime.now();
-    @OneToMany(mappedBy = "clients")
-    private List<Orders> orders = new ArrayList<>();
+    @JsonIgnore
+    @OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
+    private Set<Orders> orders = new HashSet<>();
 }

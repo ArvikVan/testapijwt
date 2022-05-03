@@ -1,6 +1,6 @@
 package arv.manipulationservice.repo;
 
-import arv.manipulationservice.model.Users;
+import arv.apijtt.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
