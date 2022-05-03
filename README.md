@@ -29,6 +29,12 @@
 - Дополнительные запросы и функционал<br>
 - Графический интерфейс (VUE.JS, JFX)<br>
 
+_Solution_<br>
+- **auth-service** - сервис на котором проходит генерация токена логином и паролем<br>
+- **gateway** - шлюз через который соединяемся с сервисами<br>
+- **eureka** - сервер на котором происходит регистрация сервисов<br>
+- **manipulation**-service - сервис на котором происходит работа с апи через проверку токена<br>
+
 Получаем токен с помощью шлюза на auth-service<br>
 ![](img/token.png)
 Добавляем клиента<br>
@@ -46,9 +52,10 @@
 
 ### Контакты для связи<br>
 <img src="https://img.icons8.com/clouds/100/000000/gmail-new.png" width="10"/> arvikvan@gmail.com<br>
-<img src="https://img.icons8.com/color/100/000000/telegram-app--v2.png" width="10"/> @ArvikV
+
+[@ArvikV](https://t.me/ArvikV)
 
 ###Используемые технологии:
 - Gradle
-- Spring Security, Data
+- Spring Cloud, Security, Data
 
