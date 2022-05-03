@@ -1,1 +1,6 @@
 rootProject.name = 'testapijwt'
+include 'gateway'
+include 'auth'
+include 'manipulation-service'
+include 'eureka'
+
