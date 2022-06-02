@@ -17,7 +17,7 @@ import java.util.List;
 public class ApiController {
     @Autowired
     private RestTemplate restTemplate;
-    private static final String url = "https://api.hh.ru/areas";
+    private static final String url = "https://jsonplaceholder.typicode.com/users";
 
     @GetMapping("/consume-api-by-rest-template")
     public List<Object> getSomeApi() {
