@@ -35,6 +35,9 @@ public class Address {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    public Address() {
+    }
+
     @JsonProperty("street")
     public String getStreet() {
         return street;

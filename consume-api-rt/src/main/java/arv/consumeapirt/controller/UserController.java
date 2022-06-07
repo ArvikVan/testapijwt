@@ -22,4 +22,9 @@ public class UserController {
     public User[] getMessageInfo() {
         return userService.getAllUsers();
     }
+
+    @GetMapping("/getAllAddresses")
+    public Address[] getAllAdresses() {
+        return userService.getAllAdress();
+    }
 }

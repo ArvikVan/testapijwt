@@ -2,6 +2,7 @@
 package arv.consumeapirt.models;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
@@ -44,6 +45,9 @@ public class User {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    public User() {
+    }
+
     @JsonProperty("id")
     public Integer getId() {
         return id;
@@ -83,17 +87,14 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-
     @JsonProperty("address")
     public Address getAddress() {
         return address;
     }
-
     @JsonProperty("address")
     public void setAddress(Address address) {
         this.address = address;
     }
-
     @JsonProperty("phone")
     public String getPhone() {
         return phone;
@@ -113,17 +114,14 @@ public class User {
     public void setWebsite(String website) {
         this.website = website;
     }
-
     @JsonProperty("company")
     public Company getCompany() {
         return company;
     }
-
     @JsonProperty("company")
     public void setCompany(Company company) {
         this.company = company;
     }
-
     @JsonAnyGetter
     public Map<String, Object> getAdditionalProperties() {
         return this.additionalProperties;

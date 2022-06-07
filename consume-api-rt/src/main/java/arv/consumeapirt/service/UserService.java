@@ -4,6 +4,9 @@ import arv.consumeapirt.models.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+import java.util.Optional;
+
 /**
  * @author ArvikV
  * @version 1.0
@@ -22,5 +25,12 @@ public class UserService {
 
     public User[] getAllUsers() {
         return this.restTemplate.getForObject(url, User[].class);
+    }
+
+    public Address[] getAllAdress() {
+        User response = restTemplate.getForObject(url, User.class);
+        assert response != null;
+        Address addresses =  response.getAddress();
+        return new Address[]{addresses};
     }
 }

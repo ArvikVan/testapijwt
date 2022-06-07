@@ -30,6 +30,15 @@ public class Message {
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
+    public Message() {
+    }
+
+    public Message(Integer code, String description, List<Datum> data) {
+        this.code = code;
+        this.description = description;
+        this.data = data;
+    }
+
     @JsonProperty("code")
     public Integer getCode() {
         return code;
