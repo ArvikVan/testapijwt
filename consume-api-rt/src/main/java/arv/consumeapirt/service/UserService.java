@@ -28,9 +28,7 @@ public class UserService {
     }
 
     public Address[] getAllAdress() {
-        User response = restTemplate.getForObject(url, User.class);
-        assert response != null;
-        Address addresses =  response.getAddress();
-        return new Address[]{addresses};
+
+        return this.restTemplate.getForObject(url, Address[].class);
     }
 }
