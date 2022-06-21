@@ -1,20 +1,13 @@
 package arv.consumeapirt.service;
 
 
+import arv.consumeapirt.models.Dat;
 import arv.consumeapirt.models.Datum;
 import arv.consumeapirt.models.Message;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import arv.consumeapirt.models.dto.MessagesInfos;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author ArvikV
@@ -32,7 +25,19 @@ public class MessageReportServiceImpl implements MessageReportService {
     }
 
     @Override
-    public ResponseEntity<Datum> getMessageInfo(String token, String dateFrom, String dateTo, String msids) {
+    public Dat.Mess[] getMesss(String dateFrom, String dateTo, String msids) {
+        String token = "83d70801-3d6c-4399-abab-f357204f4b84";
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Authorization", "Bearer " + token);
+        HttpEntity<Dat.Mess> request = new HttpEntity<>(httpHeaders);
+        ResponseEntity<Dat.Mess[]> messageReport = restTemplate.exchange(
+                url + "?dateFrom="+dateFrom+"&dateTo="+dateTo+"&msids="+msids, HttpMethod.GET, request, Dat.Mess[].class);
+
+        return messageReport.getBody();
+    }
+
+    @Override
+    public ResponseEntity<Datum> getMessageInfoDatum(String token, String dateFrom, String dateTo, String msids) {
         token = "83d70801-3d6c-4399-abab-f357204f4b84";
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", "Bearer " + token);
@@ -43,13 +48,36 @@ public class MessageReportServiceImpl implements MessageReportService {
         return messageReport;
     }
 
-    public ResponseEntity<Message> getMass(String dateFrom, String dateTo, String msids) {
+    /**
+     *
+     * @param dateFrom дата от
+     * @param dateTo дата до
+     * @param msids номер телефона
+     * @return на выходе джсон с нужными параметрами
+     */
+    public Message getMass(String dateFrom, String dateTo, String msids) {
         String token = "83d70801-3d6c-4399-abab-f357204f4b84";
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set("Authorization", "Bearer " + token);
         HttpEntity<Message> request = new HttpEntity<>(httpHeaders);
-        ResponseEntity<Message> messageReport = restTemplate.exchange(
-                url + "?dateFrom="+dateFrom+"&dateTo="+dateTo+"&msids="+msids, HttpMethod.GET, request, Message.class);
-        return messageReport;
+        return restTemplate.exchange(
+                url + "?dateFrom="+dateFrom+"&dateTo="+dateTo+"&msids="+msids, HttpMethod.GET, request, Message.class).getBody();
     }
+
+    /**
+     *
+     * @param dateFrom дата от
+     * @param dateTo дата до
+     * @param msids номер телефона
+     * @return на выходе нужный нам джсон
+     */
+    public MessagesInfos getMD(String dateFrom, String dateTo, String msids) {
+        String token = "83d70801-3d6c-4399-abab-f357204f4b84";
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Authorization", "Bearer " + token);
+        HttpEntity<MessagesInfos> request = new HttpEntity<>(httpHeaders);
+        return restTemplate.exchange(
+                url + "?dateFrom="+dateFrom+"&dateTo="+dateTo+"&msids="+msids, HttpMethod.GET, request, MessagesInfos.class).getBody();
+    }
+
 }
