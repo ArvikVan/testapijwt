@@ -7,8 +7,13 @@ import javax.annotation.Generated;
 
 import com.fasterxml.jackson.annotation.*;
 
+/**
+ * класс описывающий модель сообщения
+ * тип messageID изменен на Long
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Datum {
+    @JsonProperty("messageID")
     private Long messageID;
     private String creationDate;
     private String type;

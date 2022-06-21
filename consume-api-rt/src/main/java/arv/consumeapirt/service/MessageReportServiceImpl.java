@@ -80,4 +80,16 @@ public class MessageReportServiceImpl implements MessageReportService {
                 url + "?dateFrom="+dateFrom+"&dateTo="+dateTo+"&msids="+msids, HttpMethod.GET, request, MessagesInfos.class).getBody();
     }
 
+    /**
+     *
+     * @param messageID айди сообщения
+     * @return на выходе данные сообщения
+     */
+    public Message getMessageByMessageID(String messageID) {
+        String token = "83d70801-3d6c-4399-abab-f357204f4b84";
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set("Authorization", "Bearer " + token);
+        HttpEntity<Message> request = new HttpEntity<>(httpHeaders);
+        return restTemplate.exchange(url + "/" + messageID, HttpMethod.GET, request, Message.class).getBody();
+    }
 }

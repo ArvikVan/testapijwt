@@ -31,6 +31,14 @@ public class ApiController {
         return messageReportService.getMessageInfoDatum(token, dateFrom, dateTo, msids);
     }
 
+    /**
+     *
+     * @param dateFrom с
+     * @param dateTo до
+     * @param msids номер телефона
+     * @return на выходе джсон с нужными параметрами
+     */
+
     @GetMapping("/getMass")
     public ResponseEntity<Message> getMess(@RequestParam String dateFrom,
                                            @RequestParam String dateTo,
@@ -42,11 +50,29 @@ public class ApiController {
         //messageReportService.getMessageInfo(token, dateFrom, dateTo, msids);
         return dat.getMessList();
     }
+
+    /**
+     *
+     * @param dateFrom с
+     * @param dateTo до
+     * @param msids номер телефона
+     * @return на выходе джсон с нужными параметрами
+     */
     @GetMapping("/getMD")
     public ResponseEntity<MessagesInfos> getMD(
                                 @RequestParam String dateFrom,
                                 @RequestParam String dateTo,
                                 @RequestParam String msids) {
         return ResponseEntity.ok(messageReportService.getMD(dateFrom, dateTo, msids));
+    }
+
+    /**
+     *
+     * @param messageID id сообщения
+     * @return на выходе джсон с нужными параметрами по айди
+     */
+    @GetMapping("/{messageID}")
+    public ResponseEntity<Message> getMessageByMessageId(@PathVariable String messageID) {
+        return ResponseEntity.ok(messageReportService.getMessageByMessageID(messageID));
     }
 }
