@@ -59,7 +59,7 @@ public class ApiController {
      * @return на выходе джсон с нужными параметрами
      */
     @GetMapping("/getMD")
-    public ResponseEntity<MessagesInfos> getMD(
+    public ResponseEntity<MessagesInfos> getMD(@RequestHeader("Authorization") String token,
                                 @RequestParam String dateFrom,
                                 @RequestParam String dateTo,
                                 @RequestParam String msids) {
